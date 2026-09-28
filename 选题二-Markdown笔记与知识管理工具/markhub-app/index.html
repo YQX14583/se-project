@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MarkHub — 个人 Markdown 笔记与知识管理工具</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <span class="logo">📝 MarkHub</span>
+    <input id="btn-search" type="search" placeholder="搜索…（多词 AND、"精确短语"、tag:xxx、path:xxx） Ctrl/Cmd+P" aria-label="全文检索">
+    <span class="grow"></span>
+    <button id="btn-new" class="primary" title="新建笔记">＋ 新建笔记</button>
+    <button id="btn-preview" title="切换分栏预览">◧ 分栏预览</button>
+    <button id="btn-export-md" title="导出当前笔记为 .md">⬇ MD</button>
+    <button id="btn-export-html" title="导出当前笔记为 HTML">⬇ HTML</button>
+    <button id="btn-export-all" title="导出全部笔记为 .md">⬇ 全部</button>
+    <button id="btn-trash" title="回收站">🗑 回收站</button>
+    <button id="btn-theme" title="亮/暗主题">◐ 主题</button>
+  </header>
+
+  <div id="layout">
+    <aside aria-label="导航">
+      <section>
+        <h3>文件夹</h3>
+        <div id="tree"></div>
+      </section>
+      <section>
+        <h3>标签</h3>
+        <div id="tags"></div>
+      </section>
+    </aside>
+
+    <div id="note-list" aria-label="笔记列表"></div>
+
+    <main id="main">
+      <div id="title-bar">
+        <input id="title-input" placeholder="笔记标题" aria-label="笔记标题">
+        <span class="save-state" id="status">就绪</span>
+      </div>
+      <div id="edit-wrap">
+        <textarea id="editor" placeholder="用 Markdown 书写……&#10;输入 [[ 建立双向链接；Ctrl/Cmd+B/I/K 格式化；停止输入 2 秒自动保存" aria-label="Markdown 编辑器" disabled></textarea>
+        <div id="preview" aria-label="实时预览"></div>
+        <div id="completer"></div>
+      </div>
+      <div id="backlinks"></div>
+    </main>
+  </div>
+
+  <footer>MarkHub v1.0 · 数据 100% 存储在本浏览器（IndexedDB），零网络上传 · 软件工程 3.0 选题二作品</footer>
+
+  <script src="js/markdown.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
