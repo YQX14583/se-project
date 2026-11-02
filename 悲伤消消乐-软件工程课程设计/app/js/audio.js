@@ -114,6 +114,10 @@ export class AudioEngine {
       const freq = PENTATONIC[chain - 1];
       this.tone({ freq, duration: 0.18, type: 'triangle', gain: 0.07 });
       this.tone({ freq: freq * 1.5, duration: 0.14, type: 'sine', gain: 0.03, delay: 0.02 });
+    } else if (name === 'combo') {
+      [880, 1174.66, 1567.98].forEach((freq, index) => {
+        this.tone({ freq, duration: 0.16, type: 'triangle', gain: 0.035, delay: index * 0.045 });
+      });
     } else if (name === 'cloud') {
       this.noise({ duration: 0.3, gain: 0.06, filter: 420 });
       this.tone({ freq: 220, duration: 0.3, type: 'sine', gain: 0.04, slide: 160 });

@@ -149,7 +149,7 @@ function renderMap() {
       const current = unlocked && !best;
       const label = playable
         ? `第 ${chapter.id} 章第 ${level.index} 关 ${level.name}${best ? `，最高 ${best.highestStars} 星` : '，可游玩'}`
-        : `第 ${chapter.id} 章第 ${level.index} 关 ${level.name}，展示版暂未开放`;
+        : `第 ${chapter.id} 章第 ${level.index} 关 ${level.name}，未解锁`;
       return `
         <button
           class="level-node ${unlocked ? (best ? 'done' : 'current') : 'locked'} ${playable ? '' : 'soon'}"
@@ -161,6 +161,7 @@ function renderMap() {
           aria-disabled="${!unlocked}"
         >
           <span class="node-index">${String(level.index).padStart(2, '0')}</span>
+          <span class="node-name">${level.name}</span>
           ${best ? starsHtml(best.highestStars, { className: 'mini' }) : unlocked ? `<span class="node-open">${icon('play')}</span>` : `<span class="node-lock">${icon('lock')}</span>`}
           ${current ? '<span class="node-dot" aria-hidden="true"></span>' : ''}
         </button>`;
@@ -174,17 +175,17 @@ function renderMap() {
             <h2>${chapter.title}<small>${chapter.subtitle}</small></h2>
           </div>
           <div class="chapter-side">
-            <span class="chapter-star-count">${icon('star')} ${stars}<small>/${demoTotal * 3}</small></span>
+            <span class="chapter-star-count">${icon('star')} ${stars}<small>/45</small></span>
             <button class="journal-chip ${journalOpen ? '' : 'locked'}" data-action="journal" data-chapter="${chapter.id}" data-testid="journal-${chapter.id}" aria-label="${journalOpen ? `${chapter.title}章末情绪日记` : `${chapter.title}章末日记尚未解锁`}">
               ${icon(journalOpen ? 'book' : 'lock')}<span>章末日记</span>
             </button>
+            <span class="demo-chip">${demoTotal > 0 ? `开放 ${demoTotal} 关` : '未开放'}</span>
           </div>
         </header>
         <div class="level-grid">${nodes}</div>
         <footer class="chapter-foot">
-          <div class="chapter-progress" aria-hidden="true"><span style="width:${demoTotal ? (cleared / demoTotal) * 100 : 0}%"></span></div>
-          <span>${cleared} / ${demoTotal} 已放晴</span>
-          ${demoTotal < 15 ? `<span class="demo-chip">开放 ${demoTotal} 关</span>` : ''}
+          <div class="chapter-progress" aria-hidden="true"><span style="width:${(cleared / 15) * 100}%"></span></div>
+          <span>${cleared} / 15 已放晴</span>
         </footer>
       </section>`;
   }).join('');
@@ -213,7 +214,7 @@ function renderMap() {
           <h1>把难过，<br><em>一点点消掉。</em></h1>
           <p class="lede">拖动相邻的方块，让同色三个连在一起。每消掉一点，悲伤值就低一点；等它归零，天就放晴了。</p>
           <div class="hero-tags">
-            <span>${playableTotal} 个可玩关卡</span><span>5 段情绪</span><span>无广告 · 无内购</span>
+            <span>${playableTotal} 个可玩关卡</span><span>5 段情绪 · 75 个节点</span><span>无广告 · 无内购</span>
           </div>
         </div>
         <div class="hero-panel">
@@ -221,7 +222,7 @@ function renderMap() {
             <span>共鸣总值</span><strong>${formatNumber(summary.totalScore)}</strong>
           </div>
           <div class="summary-stat">
-            <span>收集星星</span><strong>${demoStars}<small>/${playableTotal * 3}</small></strong>
+            <span>当前可收集星星</span><strong>${demoStars}<small>/${playableTotal * 3}</small></strong>
           </div>
           <div class="summary-stat">
             <span>纯净三星</span><strong>${summary.pureThreeStar}</strong>
@@ -236,7 +237,7 @@ function renderMap() {
 
       <div class="demo-banner">
         <span class="demo-badge">展示版</span>
-        <span>本次开放 <b>${playableTotal}</b> 个关卡，覆盖 T1–T5 与章末关；其余关卡显示为待解锁，保留 75 关设计结构。</span>
+        <span>展示版只解锁第 1 章前 <b>${playableTotal}</b> 关；其余章节与关卡仍显示在地图上，但标记为未解锁、暂不可进入。</span>
       </div>
 
       <nav class="chapter-jump" aria-label="章节跳转">
@@ -248,7 +249,7 @@ function renderMap() {
       <footer class="map-footer">
         <div class="footer-moon">${icon('moon')}</div>
         <p>悲伤消消乐 · 把情绪放进一次次消除里</p>
-        <p class="muted">展示版 · ${playableTotal} 关可玩 · 单机离线 · 不上传任何数据 · v1.0</p>
+        <p class="muted">展示版 · ${playableTotal} 关可玩 · 其余未解锁 · 单机离线 · 数据存在浏览器 · v1.0</p>
       </footer>
     </div>`;
   window.scrollTo({ top: 0, behavior: 'auto' });
@@ -438,7 +439,18 @@ function updateHUD({ frame = null } = {}) {
   setText('hud-heal', `疗愈 ${Math.round(healNow * 100)}%`);
   setText('hud-layer', `第 ${run.layer} / ${run.layers} 层`);
   setText('hud-moves', run.movesLeft);
-  setText('hud-score', formatNumber(score));
+  const scoreEl = document.getElementById('hud-score');
+  if (scoreEl) {
+    const nextScore = formatNumber(score);
+    if (scoreEl.textContent !== nextScore) {
+      scoreEl.textContent = nextScore;
+      if (!ui.fast) {
+        scoreEl.classList.remove('bump');
+        void scoreEl.offsetWidth;
+        scoreEl.classList.add('bump');
+      }
+    }
+  }
   setText('hud-time', formatTime(run.elapsedMs));
   setText('hud-time-top', formatTime(run.elapsedMs));
   setText('item-used', `${run.usedItems.length} / 2`);
@@ -547,6 +559,7 @@ async function attemptSwap(a, b) {
     onFrame: (frame) => {
       updateHUD({ frame });
       audio.play('match', { chain: frame.chain });
+      if (frame.chain >= 3) audio.play('combo');
       if (frame.cloudsCleared?.length) audio.play('cloud');
       if (frame.cloudsCleared?.length) announce(`阴云散开，${frame.cells.length} 个方块被消除`);
       else announce(`消除 ${frame.cells.length} 个方块，连锁 ${frame.chain}`);
@@ -589,6 +602,7 @@ async function executeItem(type, target) {
     onFrame: (frame) => {
       updateHUD({ frame });
       if (frame.cells?.length) audio.play('match', { chain: frame.chain });
+      if (frame.chain >= 3) audio.play('combo');
       if (frame.cloudsCleared?.length) audio.play('cloud');
     },
     onLayer: (layerUp) => {
@@ -614,7 +628,8 @@ function afterAction(result) {
   if (result.phase === 'won') {
     audio.play('win');
     document.querySelector('.game-screen')?.classList.add('is-won');
-    setTimeout(() => openSettlement(), ui.fast ? 0 : 550);
+    if (ui.fast) openSettlement();
+    else playWinCeremony();
     return;
   }
   if (result.phase === 'lost') {
@@ -626,6 +641,41 @@ function afterAction(result) {
     setBoardTip('悲伤值已经清零，但还有些心事没做完。');
   }
   scheduleHint();
+}
+
+function playWinCeremony() {
+  const host = document.querySelector('.game-screen');
+  if (!host) {
+    openSettlement();
+    return;
+  }
+  const sparks = Array.from({ length: 22 }, (_, index) => {
+    const left = 8 + Math.random() * 84;
+    const delay = Math.random() * 0.5;
+    const duration = 1.1 + Math.random() * 0.9;
+    const size = 4 + Math.random() * 7;
+    return `<i style="--x:${left}%;--delay:${delay}s;--dur:${duration}s;--size:${size}px"></i>`;
+  }).join('');
+  const overlay = document.createElement('div');
+  overlay.className = 'win-ceremony';
+  overlay.setAttribute('aria-hidden', 'true');
+  overlay.innerHTML = `
+    <div class="win-rays"></div>
+    <div class="win-sun"></div>
+    <div class="win-word"><span>放晴了</span></div>
+    <div class="win-sub">这一关的情绪，被好好接住了</div>
+    <div class="win-sparks">${sparks}</div>`;
+  host.appendChild(overlay);
+  requestAnimationFrame(() => overlay.classList.add('show'));
+  setTimeout(() => {
+    overlay.classList.add('out');
+    setTimeout(() => overlay.remove(), 520);
+  }, 1150);
+  setTimeout(() => {
+    if (ui.screen === 'game' && game.run?.phase === 'won' && document.body.dataset.screen === 'game') {
+      openSettlement();
+    }
+  }, 1360);
 }
 
 function showLayerBanner(layerUp) {
@@ -735,19 +785,23 @@ function settlementTemplate(s) {
   return `
     <div class="settlement-card ${lost ? 'is-lost' : 'is-won'}" role="dialog" aria-modal="true" aria-labelledby="settle-title" data-testid="settlement">
       <div class="settle-sun" aria-hidden="true"></div>
+      <div class="settle-rays" aria-hidden="true"></div>
+      <div class="settle-sparks" id="settle-sparks" aria-hidden="true"></div>
+      ${lost ? '' : `<div class="settle-stamp ${s.stars === 3 ? 'perfect' : ''}">${s.stars === 3 ? 'PERFECT' : 'CLEAR'}</div>`}
       <p class="eyebrow">第 ${s.chapter} 章 · ${chapter.title}</p>
       <h2 id="settle-title">${lost ? '这一关，先到这里' : '放晴了'}</h2>
       <p class="settle-level">${level.name}</p>
       ${lost ? `<p class="settle-reason">${reasonText}</p>` : `<div class="settle-stars">${starsHtml(s.stars, { className: 'large' })}</div>`}
       ${lost ? '' : `<p class="settle-quote">“${quote}”</p>`}
       <div class="settle-stats">
-        <div><span>共鸣值</span><strong>${formatNumber(s.score)}</strong></div>
+        <div><span>共鸣值</span><strong class="settle-score" id="settle-score" data-score="${s.score}">0</strong></div>
         <div><span>${lost ? '剩余悲伤' : '剩余步数'}</span><strong>${lost ? s.sadness : `${s.movesLeft}<small> / ${s.moveBudget}</small>`}</strong></div>
         <div><span>${lost ? '连续失败' : '个人总分'}</span><strong>${lost ? s.failureStreak : formatNumber(s.totalScore)}</strong></div>
       </div>
       ${lost ? '' : `
         <div class="settle-compare">
           <span>${s.newBest ? '刷新了自己的最好成绩' : s.previousBest ? `最好成绩 ${formatNumber(s.previousBest)}` : '新的记录'}</span>
+          ${s.chainMax >= 2 ? `<span class="chain-chip">最高连锁 ×${s.chainMax}</span>` : ''}
           ${s.pure ? '<span class="pure-chip">纯净通关</span>' : ''}
           ${s.gentle ? '<span class="gentle-chip">温柔模式</span>' : ''}
           ${s.newBest ? '<span class="best-chip">NEW BEST</span>' : ''}
@@ -761,6 +815,39 @@ function settlementTemplate(s) {
     </div>`;
 }
 
+function animateScore(target) {
+  const el = document.getElementById('settle-score');
+  if (!el) return;
+  if (ui.fast || globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches) {
+    el.textContent = formatNumber(target);
+    return;
+  }
+  const duration = 950;
+  const start = performance.now();
+  const step = (now) => {
+    const t = Math.min(1, (now - start) / duration);
+    const eased = 1 - (1 - t) ** 3;
+    el.textContent = formatNumber(Math.round(target * eased));
+    if (t < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+
+function spawnSettlementSparks() {
+  const host = document.getElementById('settle-sparks');
+  if (!host || ui.fast || globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
+  const colors = ['#ffd98a', '#ffe9a8', '#7fc9b0', '#8fa8ff', '#ff9a86'];
+  for (let i = 0; i < 30; i += 1) {
+    const spark = document.createElement('i');
+    spark.style.setProperty('--x', `${Math.random() * 100}%`);
+    spark.style.setProperty('--delay', `${Math.random() * 0.9}s`);
+    spark.style.setProperty('--dur', `${1.5 + Math.random() * 1.4}s`);
+    spark.style.setProperty('--size', `${3 + Math.random() * 6}px`);
+    spark.style.setProperty('--color', colors[i % colors.length]);
+    host.appendChild(spark);
+  }
+}
+
 function renderSettlementModal(s) {
   ui.afterClose = null;
   openModal(settlementTemplate(s), { dismissible: false, className: s.lost ? 'settle-backdrop lost' : 'settle-backdrop won' });
@@ -768,6 +855,13 @@ function renderSettlementModal(s) {
   document.querySelectorAll('.settle-stars .star').forEach((star, index) => {
     star.style.animationDelay = `${index * 0.13}s`;
   });
+  animateScore(s.score);
+  spawnSettlementSparks();
+  if (!s.lost && !ui.fast) {
+    for (let i = 0; i < s.stars; i += 1) {
+      setTimeout(() => audio.play('star'), 180 + i * 140);
+    }
+  }
 }
 
 function openShare() {
@@ -911,6 +1005,14 @@ function openSettings(returnTo = null) {
         ${settingSwitch('reducedColorMode', '低颜色依赖', '降低颜色饱和度，强化形状与纹理边界', settings.reducedColorMode)}
       </div>
       <div class="storage-status ${game.repo.storageAvailable ? '' : 'off'}"><span class="storage-dot ${game.repo.storageAvailable ? '' : 'off'}"></span>${storage}</div>
+      <div class="storage-detail" data-testid="storage-detail">
+        <strong>本地数据存放在哪里</strong>
+        <p>浏览器 <code>localStorage</code>，按站点隔离。当前站点：<code>${escapeHtml(location.origin)}</code></p>
+        <div class="storage-key"><code>sadmatch.profile.v1</code><span>进度、星级、道具、设置、日记</span></div>
+        <div class="storage-key"><code>sadmatch.run.v1</code><span>当前未完成一局的断点快照</span></div>
+        <div class="storage-key"><code>sadmatch.corrupt.v1</code><span>无法解析的坏档备份</span></div>
+        <small>这些数据在浏览器配置目录里，不在项目文件夹；清除浏览器站点数据或点“清除全部进度”会删除/重置。</small>
+      </div>
       <div class="settings-danger">
         <div><strong>清除进度</strong><small>关卡、星级、道具和日记都会回到初始状态</small></div>
         <button class="text-btn danger" data-action="reset-progress" data-testid="reset-progress">${ui.confirmReset ? '再点一次确认清除' : '清除全部进度'}</button>
@@ -1073,7 +1175,7 @@ document.addEventListener('click', (event) => {
   if (action === 'locked') {
     const level = levelById(actionEl.dataset.level);
     toast(level && !game.isPlayable(level.id)
-      ? '这一关在展示版中暂未开放，其余关卡会随内容更新解锁。'
+      ? '这一关尚未解锁；展示版只开放第 1 章前 3 关，其余关卡会随内容更新解锁。'
       : '先通过前面的关卡，才能走进这里。', 'warning');
     return;
   }
@@ -1212,5 +1314,6 @@ if (FAST) {
     },
     useItem: (type, target) => game.useItem(type, target),
     saveCheckpoint: () => game.saveCheckpoint(),
+    winCeremony: () => { ui.fast = false; playWinCeremony(); },
   };
 }

@@ -158,12 +158,11 @@ const BONUSES = {
 };
 
 /**
- * 展示版实际开放的关卡：覆盖 T1–T5、教学关与章末关。
- * 其余关卡保留 75 关设计数据，在地图上显示为「待解锁」。
+ * 展示版实际开放的关卡：仅第 1 章前 3 关（教学关）。
+ * 其余章节与关卡不进入 UI；75 关配置仅作为设计数据保留，不开放、不渲染。
  */
 export const PLAYABLE_LEVEL_IDS = Object.freeze([
-  'C1-L01', 'C1-L02', 'C1-L03', 'C1-L15',
-  'C2-L09', 'C3-L02', 'C4-L02', 'C5-L02',
+  'C1-L01', 'C1-L02', 'C1-L03',
 ]);
 const PLAYABLE = new Set(PLAYABLE_LEVEL_IDS);
 

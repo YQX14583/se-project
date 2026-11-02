@@ -1,79 +1,33 @@
 {
-  "generatedAt": "2026-11-02T11:06:38.625Z",
-  "durationMs": 3308,
+  "generatedAt": "2026-11-02T11:44:37.436Z",
+  "durationMs": 516,
   "runsPerLevel": 200,
   "engine": "no-item greedy goal-aware bot / deterministic seeds",
   "scope": "playable",
   "overall": {
-    "games": 1600,
-    "wins": 1593,
-    "passRate": 0.995625,
-    "threeStarRate": 0.5461393596986818,
-    "avgMoves": 22.979375
+    "games": 600,
+    "wins": 600,
+    "passRate": 1,
+    "threeStarRate": 0.9066666666666666,
+    "avgMoves": 17.88
   },
   "byChapter": {
     "1": {
-      "games": 800,
-      "wins": 800,
+      "games": 600,
+      "wins": 600,
       "passRate": 1,
-      "threeStarRate": 0.745,
-      "avgMoves": 20.6025,
-      "levels": 4
-    },
-    "2": {
-      "games": 200,
-      "wins": 193,
-      "passRate": 0.965,
-      "threeStarRate": 0.2538860103626943,
-      "avgMoves": 21.34,
-      "levels": 1
-    },
-    "3": {
-      "games": 200,
-      "wins": 200,
-      "passRate": 1,
-      "threeStarRate": 0.48,
-      "avgMoves": 22.775,
-      "levels": 1
-    },
-    "4": {
-      "games": 200,
-      "wins": 200,
-      "passRate": 1,
-      "threeStarRate": 0.325,
-      "avgMoves": 27.475,
-      "levels": 1
-    },
-    "5": {
-      "games": 200,
-      "wins": 200,
-      "passRate": 1,
-      "threeStarRate": 0.32,
-      "avgMoves": 29.835,
-      "levels": 1
+      "threeStarRate": 0.9066666666666666,
+      "avgMoves": 17.88,
+      "levels": 3
     }
   },
   "byPace": {
     "breathe": {
-      "levels": 6,
-      "games": 1200,
+      "levels": 3,
+      "games": 600,
       "passRate": 1,
-      "threeStarRate": 0.6408333333333334,
-      "avgMoves": 22.287499999999998
-    },
-    "steady": {
-      "levels": 1,
-      "games": 200,
-      "passRate": 0.965,
-      "threeStarRate": 0.2538860103626943,
-      "avgMoves": 21.34
-    },
-    "hard": {
-      "levels": 1,
-      "games": 200,
-      "passRate": 1,
-      "threeStarRate": 0.26,
-      "avgMoves": 28.77
+      "threeStarRate": 0.9066666666666666,
+      "avgMoves": 17.88
     }
   },
   "levels": [
@@ -143,139 +97,6 @@
       "avgMoves": 19.065,
       "avgMovesWon": 19.065,
       "avgScore": 1646.975,
-      "reasons": {},
-      "goalFailures": {}
-    },
-    {
-      "levelId": "C1-L15",
-      "chapter": 1,
-      "index": 15,
-      "name": "天亮之前",
-      "pace": "hard",
-      "s0": 68,
-      "layers": 2,
-      "totalS0": 139,
-      "moves": 55,
-      "colors": 5,
-      "bonus": null,
-      "runs": 200,
-      "wins": 200,
-      "passRate": 1,
-      "threeStar": 52,
-      "threeStarRate": 0.26,
-      "avgMoves": 28.77,
-      "avgMovesWon": 28.77,
-      "avgScore": 2467.85,
-      "reasons": {},
-      "goalFailures": {}
-    },
-    {
-      "levelId": "C2-L09",
-      "chapter": 2,
-      "index": 9,
-      "name": "无人接听",
-      "pace": "steady",
-      "s0": 66,
-      "layers": 2,
-      "totalS0": 135,
-      "moves": 54,
-      "colors": 5,
-      "bonus": {
-        "type": "T2",
-        "color": 3,
-        "count": 14
-      },
-      "runs": 200,
-      "wins": 193,
-      "passRate": 0.965,
-      "threeStar": 49,
-      "threeStarRate": 0.2538860103626943,
-      "avgMoves": 21.34,
-      "avgMovesWon": 20.155440414507773,
-      "avgScore": 2967.3056994818653,
-      "reasons": {
-        "goals": 7
-      },
-      "goalFailures": {
-        "T2": 7
-      }
-    },
-    {
-      "levelId": "C3-L02",
-      "chapter": 3,
-      "index": 2,
-      "name": "眼泪的重量",
-      "pace": "breathe",
-      "s0": 60,
-      "layers": 2,
-      "totalS0": 123,
-      "moves": 50,
-      "colors": 6,
-      "bonus": {
-        "type": "T3",
-        "count": 2,
-        "initialClouds": 1
-      },
-      "runs": 200,
-      "wins": 200,
-      "passRate": 1,
-      "threeStar": 96,
-      "threeStarRate": 0.48,
-      "avgMoves": 22.775,
-      "avgMovesWon": 22.775,
-      "avgScore": 2506.925,
-      "reasons": {},
-      "goalFailures": {}
-    },
-    {
-      "levelId": "C4-L02",
-      "chapter": 4,
-      "index": 2,
-      "name": "原谅",
-      "pace": "breathe",
-      "s0": 68,
-      "layers": 2,
-      "totalS0": 139,
-      "moves": 58,
-      "colors": 6,
-      "bonus": {
-        "type": "T4",
-        "count": 3
-      },
-      "runs": 200,
-      "wins": 200,
-      "passRate": 1,
-      "threeStar": 65,
-      "threeStarRate": 0.325,
-      "avgMoves": 27.475,
-      "avgMovesWon": 27.475,
-      "avgScore": 2728,
-      "reasons": {},
-      "goalFailures": {}
-    },
-    {
-      "levelId": "C5-L02",
-      "chapter": 5,
-      "index": 2,
-      "name": "站台的风",
-      "pace": "breathe",
-      "s0": 78,
-      "layers": 2,
-      "totalS0": 159,
-      "moves": 62,
-      "colors": 6,
-      "bonus": {
-        "type": "T5",
-        "rate": 0.2
-      },
-      "runs": 200,
-      "wins": 200,
-      "passRate": 1,
-      "threeStar": 64,
-      "threeStarRate": 0.32,
-      "avgMoves": 29.835,
-      "avgMovesWon": 29.835,
-      "avgScore": 2956.7,
       "reasons": {},
       "goalFailures": {}
     }

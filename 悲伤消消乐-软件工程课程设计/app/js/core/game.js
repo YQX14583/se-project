@@ -428,6 +428,7 @@ export class Game {
       moveBudget: this.run.moveBudget,
       clouds: cloudsNow,
       totalS0: this.run.totalS0,
+      chainMax: this.run.chainMax,
       sadness: 0,
       pure,
       gentle: this.run.gentle,

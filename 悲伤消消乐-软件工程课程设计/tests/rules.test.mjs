@@ -83,8 +83,8 @@ test('星级判定：25% / 45% / 阴云 / 温柔模式截断', () => {
 test('75 关配置满足范围、章节与展示版约束', () => {
   assert.deepEqual(validateLevels(), []);
   assert.equal(LEVELS.length, 75);
-  assert.equal(PLAYABLE_LEVEL_IDS.length, 8);
-  assert.equal(LEVELS.filter((level) => level.demo).length, 8);
+  assert.equal(PLAYABLE_LEVEL_IDS.length, 3);
+  assert.equal(LEVELS.filter((level) => level.demo).length, 3);
   for (const level of LEVELS) {
     assert.ok(level.s0 >= 40 && level.s0 <= 100, level.id);
     assert.ok(level.moves >= 40 && level.moves <= 90, level.id);
@@ -92,7 +92,7 @@ test('75 关配置满足范围、章节与展示版约束', () => {
     assert.ok(level.layers >= 1 && level.layers <= 3, level.id);
     for (const s0 of layerS0sFor(level)) assert.ok(s0 >= 40 && s0 <= 100, level.id);
   }
-  for (const id of ['C1-L01', 'C1-L02', 'C1-L03', 'C1-L15', 'C2-L09', 'C3-L02', 'C4-L02', 'C5-L02']) {
+  for (const id of ['C1-L01', 'C1-L02', 'C1-L03']) {
     assert.ok(isPlayableLevel(id), id);
     assert.ok(LEVELS.find((level) => level.id === id).demo, id);
   }
@@ -150,9 +150,9 @@ test('没有可消除走法时自动重排，且不改变阴云数量', () => {
   assert.equal(board.clouds.length, before);
 });
 
-test('展示版默认只开放 8 关，其余关卡拒绝进入', () => {
+test('展示版默认只开放第 1 章前 3 关，其余关卡拒绝进入', () => {
   const { game } = newGame();
-  assert.equal(game.profile.unlockedLevelIds.length, 8);
+  assert.equal(game.profile.unlockedLevelIds.length, 3);
   assert.equal(game.startLevel('C1-L01').ok, true);
   game.leaveRun();
   assert.equal(game.startLevel('C1-L04').code, 'LEVEL_LOCKED');

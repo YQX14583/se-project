@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * 蒙特卡洛验证脚本（AC-04 的模拟记录）：
- * 对 75 关各跑 N 局无道具机器人对局，输出通关率、平均步数、三星率与目标完成情况。
+ * 对展示关各跑 N 局无道具机器人对局，输出通关率、平均步数、三星率与目标完成情况。
  * 运行：node scripts/simulate.mjs --runs 200
  */
 import fs from 'node:fs';
@@ -138,7 +138,7 @@ for (const level of TARGET_LEVELS) {
 }
 
 const byChapter = {};
-for (let chapter = 1; chapter <= 5; chapter += 1) {
+for (const chapter of [...new Set(results.map((row) => row.chapter))].sort((a, b) => a - b)) {
   const rows = results.filter((row) => row.chapter === chapter);
   const totalGames = rows.reduce((sum, row) => sum + row.runs, 0);
   const totalWins = rows.reduce((sum, row) => sum + row.wins, 0);
@@ -155,6 +155,7 @@ for (let chapter = 1; chapter <= 5; chapter += 1) {
 const byPace = {};
 for (const pace of ['breathe', 'steady', 'hard']) {
   const rows = results.filter((row) => row.pace === pace);
+  if (!rows.length) continue;
   const totalGames = rows.reduce((sum, row) => sum + row.runs, 0);
   const totalWins = rows.reduce((sum, row) => sum + row.wins, 0);
   byPace[pace] = {
@@ -206,9 +207,9 @@ const md = [
   '',
   '| 节奏 | 关卡数 | 通关率 | 三星率 | 目标区间 |',
   '| --- | --- | --- | --- | --- |',
-  `| 喘息关 | ${byPace.breathe.levels} | ${pct(byPace.breathe.passRate)}% | ${pct(byPace.breathe.threeStarRate)}% | 85–95% |`,
-  `| 中档关 | ${byPace.steady.levels} | ${pct(byPace.steady.passRate)}% | ${pct(byPace.steady.threeStarRate)}% | 55–70% |`,
-  `| 困难关 | ${byPace.hard.levels} | ${pct(byPace.hard.passRate)}% | ${pct(byPace.hard.threeStarRate)}% | 25–40% |`,
+  ...([['breathe', '喘息关', '85–95%'], ['steady', '中档关', '55–70%'], ['hard', '困难关', '25–40%']]
+    .filter(([key]) => byPace[key])
+    .map(([key, label, target]) => `| ${label} | ${byPace[key].levels} | ${pct(byPace[key].passRate)}% | ${pct(byPace[key].threeStarRate)}% | ${target} |`)),
   '',
   '> 机器人为机械策略，数值只用于验证关卡可达性与趋势，不等同于真人通关率。逐关明细见 `evidence/simulation.json`。',
   '',

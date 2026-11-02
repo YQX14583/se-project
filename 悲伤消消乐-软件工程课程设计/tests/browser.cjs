@@ -68,12 +68,14 @@ async function newPage(context) {
   const requests = [];
   page.on('request', (request) => requests.push(request.url()));
 
-  await step('B01 地图加载：75 个节点、8 个可玩关卡、5 个章节', async () => {
+  await step('B01 地图加载：75 个节点全部显示，仅前 3 关解锁', async () => {
     await page.goto(`${base}/?e2e=1`, { waitUntil: 'networkidle' });
     assert.equal(await page.locator('.level-node').count(), 75);
-    assert.equal(await page.locator('.level-node.current').count(), 8);
+    assert.equal(await page.locator('.level-node.current').count(), 3);
     assert.equal(await page.locator('.chapter-card').count(), 5);
-    assert.match(await page.locator('.demo-banner').innerText(), /开放 8 个关卡/);
+    assert.equal(await page.locator('.chapter-jump').count(), 1);
+    assert.equal(await page.locator('.level-node.locked').count(), 72);
+    assert.match(await page.locator('.demo-banner').innerText(), /仍显示在地图上/);
     await page.screenshot({ path: path.join(evidenceDir, '20-e2e-map.png'), fullPage: false });
   });
 
@@ -178,23 +180,30 @@ async function newPage(context) {
     assert.equal(await page.locator('[data-testid=settlement]').count(), 1);
   });
 
-  await step('B09 结算返回地图：星级、进度与日记联动', async () => {
+  await step('B09 结算返回地图：星级与第 1 章进度更新', async () => {
     await page.locator('[data-testid=settle-map]').click();
     await page.waitForTimeout(500);
     assert.equal(await page.locator('[data-testid=map]').count(), 1);
     assert.ok((await page.locator('[data-testid=level-C1-L01] .stars.mini .star.filled').count()) >= 1);
-    assert.match(await page.locator('[data-testid=chapter-1] .chapter-foot').innerText(), /1 \/ 4/);
+    assert.match(await page.locator('[data-testid=chapter-1] .chapter-foot').innerText(), /1 \/ 15/);
   });
 
-  await step('B10 待解锁关卡给出明确提示', async () => {
+  await step('B10 未解锁关卡仍然显示，但点击/接口都不能进入', async () => {
+    assert.equal(await page.locator('[data-testid="level-C1-L04"]').count(), 1);
+    assert.equal(await page.locator('[data-testid="level-C1-L04"]').getAttribute('data-action'), 'locked');
     await page.locator('[data-testid="level-C1-L04"]').click({ force: true });
-    await page.waitForTimeout(300);
-    assert.match(await page.locator('#toast').innerText(), /展示版中暂未开放/);
+    await page.waitForTimeout(250);
+    assert.match(await page.locator('#toast').innerText(), /尚未解锁/);
+    const code = await page.evaluate(() => window.__sadApp.game.startLevel('C1-L04').code);
+    assert.equal(code, 'LEVEL_LOCKED');
   });
 
   await step('B11 设置：低颜色依赖持久化', async () => {
     await page.locator('[data-testid=settings-open]').click();
     await page.waitForTimeout(250);
+    const storageText = await page.locator('[data-testid=storage-detail]').innerText();
+    assert.match(storageText, /sadmatch\.profile\.v1/);
+    assert.match(storageText, /sadmatch\.run\.v1/);
     await page.locator('[data-action=toggle-setting][data-key=reducedColorMode]').click();
     await page.waitForTimeout(250);
     assert.equal(await page.locator('[data-action=toggle-setting][data-key=reducedColorMode]').getAttribute('aria-checked'), 'true');
@@ -213,28 +222,26 @@ async function newPage(context) {
 
   await context.close();
 
-  // 章末日记 + 分享（独立上下文，避免上面的进度干扰）
-  const journalContext = await browser.newContext({ viewport: { width: 1280, height: 900 } });
-  const journalPage = await newPage(journalContext);
-  await journalPage.goto(`${base}/?e2e=1`, { waitUntil: 'networkidle' });
-  await step('B13 章末关通关解锁日记，并可生成日记分享图', async () => {
-    await journalPage.evaluate(() => window.__sadApp.start('C1-L15'));
-    await journalPage.waitForTimeout(250);
-    await journalPage.evaluate(() => window.__sadApp.autoPlay());
-    await journalPage.waitForTimeout(500);
-    assert.equal(await journalPage.locator('[data-testid=settlement]').count(), 1);
-    assert.match(await journalPage.locator('[data-testid=settlement]').innerText(), /日记/);
-    await journalPage.locator('[data-testid=settle-map]').click();
-    await journalPage.waitForTimeout(500);
-    await journalPage.locator('[data-testid=journal-1]').click();
-    await journalPage.waitForTimeout(350);
-    assert.equal(await journalPage.locator('[data-testid=journal-modal]').count(), 1);
-    await journalPage.locator('[data-testid=journal-share]').click();
-    await journalPage.waitForTimeout(350);
-    assert.equal(await journalPage.locator('.share-preview canvas').count(), 1);
-    await journalPage.screenshot({ path: path.join(evidenceDir, '25-e2e-journal.png'), fullPage: false });
+  // 第 3 关是展示版最后一关：结算不应出现“下一关”
+  const finaleContext = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  const finalePage = await newPage(finaleContext);
+  await finalePage.goto(`${base}/?e2e=1`, { waitUntil: 'networkidle' });
+  await step('B13 最后一关通关：不出现下一关，返回地图仍是 75 个节点', async () => {
+    await finalePage.evaluate(() => window.__sadApp.start('C1-L03'));
+    await finalePage.waitForTimeout(250);
+    await finalePage.evaluate(() => window.__sadApp.autoPlay());
+    await finalePage.waitForTimeout(500);
+    assert.equal(await finalePage.locator('[data-testid=settlement]').count(), 1);
+    assert.equal(await finalePage.locator('[data-testid=settle-next]').count(), 0);
+    assert.equal(await finalePage.locator('[data-testid=settle-map]').count(), 1);
+    await finalePage.locator('[data-testid=settle-map]').click();
+    await finalePage.waitForTimeout(500);
+    assert.equal(await finalePage.locator('.level-node').count(), 75);
+    assert.equal(await finalePage.locator('.level-node.locked').count(), 72);
+    assert.equal(await finalePage.locator('[data-testid=level-C1-L03] .stars.mini .star.filled').count() >= 1, true);
+    await finalePage.screenshot({ path: path.join(evidenceDir, '25-e2e-finale.png'), fullPage: false });
   });
-  await journalContext.close();
+  await finaleContext.close();
 
   // 移动端
   const mobileContext = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
@@ -257,6 +264,45 @@ async function newPage(context) {
     await mobilePage.screenshot({ path: path.join(evidenceDir, '26-e2e-mobile.png'), fullPage: false });
   });
   await mobileContext.close();
+
+  // 动画层：连锁弹字、粒子、通关演出、结算装饰
+  const fxContext = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
+  const fxPage = await newPage(fxContext);
+  await fxPage.goto(`${base}/?e2e=1`, { waitUntil: 'networkidle' });
+  await step('B19 连锁弹字与粒子层可渲染', async () => {
+    await fxPage.locator('[data-testid="level-C1-L01"]').click();
+    await fxPage.waitForTimeout(300);
+    await fxPage.evaluate(() => {
+      document.documentElement.classList.remove('e2e');
+      window.__sadApp.ui.fast = false;
+      const boardView = window.__sadApp.ui.boardView;
+      boardView.spawnBurst([{ r: 1, c: 1, color: 0 }, { r: 6, c: 6, color: 2 }]);
+      boardView.showCombo(3, 120);
+    });
+    await fxPage.waitForTimeout(180);
+    assert.equal(await fxPage.locator('.combo-pop').count(), 1);
+    assert.match(await fxPage.locator('.combo-pop').innerText(), /×3/);
+    assert.equal(await fxPage.locator('.fx-layer').count(), 1);
+    assert.ok((await fxPage.locator('.fx-spark').count()) > 0);
+    await fxPage.screenshot({ path: path.join(evidenceDir, '27-e2e-combo.png'), fullPage: false });
+    await fxPage.waitForTimeout(1000);
+  });
+  await step('B20 通关演出与结算装饰层可渲染', async () => {
+    await fxPage.evaluate(() => window.__sadApp.winCeremony());
+    await fxPage.waitForTimeout(700);
+    assert.equal(await fxPage.locator('.win-ceremony').count(), 1);
+    assert.match(await fxPage.locator('.win-word').innerText(), /放晴了/);
+    await fxPage.screenshot({ path: path.join(evidenceDir, '28-e2e-win.png'), fullPage: false });
+    await fxPage.waitForTimeout(1700);
+    await fxPage.evaluate(() => window.__sadApp.autoPlay());
+    await fxPage.waitForTimeout(700);
+    assert.equal(await fxPage.locator('[data-testid=settlement]').count(), 1);
+    assert.equal(await fxPage.locator('.settle-rays').count(), 1);
+    assert.equal(await fxPage.locator('.settle-stamp').count(), 1);
+    assert.ok((await fxPage.locator('.settle-sparks i').count()) > 0);
+    await fxPage.screenshot({ path: path.join(evidenceDir, '29-e2e-settle-fx.png'), fullPage: false });
+  });
+  await fxContext.close();
 
   // 离线
   const offlineContext = await browser.newContext({ viewport: { width: 1280, height: 900 } });

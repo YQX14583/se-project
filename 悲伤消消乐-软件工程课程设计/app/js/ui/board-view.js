@@ -26,11 +26,13 @@ export class BoardView {
     this.focus = { r: 0, c: 0 };
     this.drag = null;
     this.accent = '#8fa8ff';
+    this.reduceMotion = Boolean(globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches);
     this.mount();
   }
 
   mount() {
-    this.root.innerHTML = '<div class="board-grid" aria-hidden="true"></div><div class="board-glow" aria-hidden="true"></div>';
+    this.root.innerHTML = '<div class="board-grid" aria-hidden="true"></div><div class="board-glow" aria-hidden="true"></div><div class="fx-layer" aria-hidden="true"></div>';
+    this.fx = this.root.querySelector('.fx-layer');
     this.root.classList.add('board');
     this.root.setAttribute('role', 'group');
     this.root.setAttribute('aria-label', '消消乐棋盘，用方向键移动，回车选择方块');
@@ -300,6 +302,85 @@ export class BoardView {
     if (focusEl) focusEl.tabIndex = 0;
   }
 
+  fxEnabled(fast) {
+    return !fast && !this.reduceMotion;
+  }
+
+  averageCell(cells) {
+    const list = cells.length ? cells : [{ r: 3.5, c: 3.5 }];
+    const r = list.reduce((sum, cell) => sum + cell.r, 0) / list.length;
+    const c = list.reduce((sum, cell) => sum + cell.c, 0) / list.length;
+    return { r, c };
+  }
+
+  spawnBurst(cells) {
+    if (!this.fx) return;
+    for (const cell of cells.slice(0, 12)) {
+      const color = TILE_TYPES[cell.color]?.color ?? '#ffe9a8';
+      for (let i = 0; i < 5; i += 1) {
+        const spark = document.createElement('i');
+        spark.className = 'fx-spark';
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 26 + Math.random() * 54;
+        spark.style.left = `${(cell.c + 0.5) * 12.5}%`;
+        spark.style.top = `${(cell.r + 0.5) * 12.5}%`;
+        spark.style.setProperty('--spark-color', color);
+        spark.style.setProperty('--dx', `${Math.cos(angle) * distance}px`);
+        spark.style.setProperty('--dy', `${Math.sin(angle) * distance}px`);
+        spark.style.setProperty('--delay', `${Math.random() * 70}ms`);
+        spark.style.setProperty('--size', `${6 + Math.random() * 7}px`);
+        this.fx.appendChild(spark);
+        setTimeout(() => spark.remove(), 760);
+      }
+    }
+    const center = this.averageCell(cells);
+    const ring = document.createElement('span');
+    ring.className = 'fx-ring';
+    ring.style.left = `${(center.c + 0.5) * 12.5}%`;
+    ring.style.top = `${(center.r + 0.5) * 12.5}%`;
+    this.fx.appendChild(ring);
+    setTimeout(() => ring.remove(), 620);
+  }
+
+  spawnFloat(cells, scoreDelta, chain) {
+    if (!this.fx || scoreDelta <= 0) return;
+    const center = this.averageCell(cells);
+    const float = document.createElement('span');
+    float.className = `fx-score chain-${Math.min(5, Math.max(1, chain))}`;
+    float.textContent = `+${scoreDelta}`;
+    float.style.left = `${(center.c + 0.5) * 12.5}%`;
+    float.style.top = `${(center.r + 0.5) * 12.5}%`;
+    this.fx.appendChild(float);
+    setTimeout(() => float.remove(), 820);
+  }
+
+  showCombo(chain, scoreDelta) {
+    if (!this.fx) return;
+    this.fx.querySelectorAll('.combo-pop').forEach((el) => el.remove());
+    const labels = { 2: '不错', 3: '连锁', 4: '心动连锁', 5: '疗愈爆发' };
+    const tier = Math.min(5, Math.max(2, chain));
+    const pop = document.createElement('div');
+    pop.className = `combo-pop tier-${tier}`;
+    pop.innerHTML = `<span class="combo-kicker">CHAIN</span><strong>×${chain}</strong><small>${labels[tier]} · +${scoreDelta}</small>`;
+    this.fx.appendChild(pop);
+    const flash = document.createElement('span');
+    flash.className = 'fx-flash';
+    this.fx.appendChild(flash);
+    setTimeout(() => flash.remove(), 560);
+    this.root.classList.add('is-combo');
+    setTimeout(() => pop.remove(), 900);
+    setTimeout(() => this.root.classList.remove('is-combo'), 720);
+  }
+
+  impact() {
+    const screen = this.root.closest('.game-screen');
+    if (!screen) return;
+    screen.classList.remove('is-impact');
+    void screen.offsetWidth;
+    screen.classList.add('is-impact');
+    setTimeout(() => screen.classList.remove('is-impact'), 340);
+  }
+
   async play(result, run, { fast = false, onFrame, onLayer } = {}) {
     const wait = (ms) => sleep(fast ? 0 : ms);
     // FR-AV-03：单步动画 ≤0.6s，整条连锁 ≤2s。按帧数分摊预算，避免长连锁超时。
@@ -318,6 +399,12 @@ export class BoardView {
       }
       for (const cell of frame.cells ?? []) this.popTile(cell.id, !fast);
       for (const cloud of frame.cloudsCleared ?? []) this.popCloud(cellKey(cloud.r, cloud.c), !fast);
+      if (this.fxEnabled(fast) && frame.cells?.length) {
+        this.spawnBurst(frame.cells);
+        this.spawnFloat(frame.cells, frame.scoreDelta, frame.chain);
+        if (frame.chain >= 2) this.showCombo(frame.chain, frame.scoreDelta);
+        if (frame.chain >= 3) this.impact();
+      }
       onFrame?.(frame);
       await wait(popWait);
       this.render(frame.board, { animate: !fast });
@@ -326,6 +413,8 @@ export class BoardView {
       setTimeout(() => this.root.classList.remove('cloud-born'), 320);
     }
     if (result.layerUp) {
+      this.root.classList.add('layer-flash');
+      setTimeout(() => this.root.classList.remove('layer-flash'), 650);
       onLayer?.(result.layerUp);
       await wait(700);
     }
