@@ -8,22 +8,45 @@
 
 ## 快速运行
 
-零构建、零运行时依赖、无 CDN、无后端。只需要一个静态文件服务器：
+零构建、无 CDN、无后端。只需要一个本地静态文件服务器。
+
+### Windows（推荐）
+
+1. 把整个 `悲伤消消乐-软件工程课程设计` 文件夹复制到 Windows；
+2. 双击项目根目录的 **`start-windows.bat`**；
+3. 脚本会自动用 Node.js 或 Python 启动服务器，并打开 <http://127.0.0.1:8770>。
+
+如果双击后一闪而过，或提示找不到 Node/Python：
+
+- 安装 [Node.js LTS](https://nodejs.org/) 或 [Python 3](https://www.python.org/downloads/)；
+- 在项目根目录打开 PowerShell / CMD，手动执行：
+
+```powershell
+# 方式 A：Node.js（推荐，跨平台）
+node scripts/serve.mjs
+
+# 方式 B：Python 3
+py -3 -m http.server 8770 --bind 127.0.0.1 --directory app
+# 如果 py 不可用：
+python -m http.server 8770 --bind 127.0.0.1 --directory app
+```
+
+然后浏览器打开 <http://127.0.0.1:8770>。
+
+### macOS / Linux
 
 ```bash
 cd 悲伤消消乐-软件工程课程设计
 python3 -m http.server 8770 --bind 127.0.0.1 --directory app
+# 或者：node scripts/serve.mjs
+# 或者：npm start
 ```
 
 打开 <http://127.0.0.1:8770>。
 
-也可以使用 npm 脚本：
-
-```bash
-npm start          # 等价于上面的 python3 静态服务器
-```
-
-> 直接双击 `app/index.html` 在部分浏览器中受 ES Module 的同源限制，建议用静态服务器。
+> **不要直接双击 `app/index.html`**：浏览器在 `file://` 下会阻止 ES Module 加载，页面会空白或报 CORS 错误。请用上面的静态服务器。
+>
+> Windows 如果弹出防火墙提示，允许“专用网络”即可；服务器只绑定 `127.0.0.1`，不会暴露到局域网。
 
 ## 开放关卡
 
@@ -129,6 +152,8 @@ Chromium 系浏览器的 `leveldb` 是二进制格式，不建议手改；用 De
 │       ├── audio.js
 │       └── main.js
 ├── docs/                      # 需求、设计、基线、AI 记录、关键结论、实现说明
+├── scripts/serve.mjs          # 零依赖静态服务器（Node，Windows/macOS/Linux 通用）
+├── start-windows.bat          # Windows 双击启动
 ├── scripts/simulate.mjs       # 蒙特卡洛模拟（3 个展示关 × N 局）
 ├── tests/rules.test.mjs       # 18 项领域/存档/流程单元测试
 ├── tests/browser.cjs          # 20 项 Playwright 浏览器验收

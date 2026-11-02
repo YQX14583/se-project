@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-11-02T11:44:37.436Z",
-  "durationMs": 516,
+  "generatedAt": "2026-11-02T11:48:14.211Z",
+  "durationMs": 525,
   "runsPerLevel": 200,
   "engine": "no-item greedy goal-aware bot / deterministic seeds",
   "scope": "playable",
