@@ -1,0 +1,49 @@
+{
+  "name": "悲伤消消乐",
+  "taskName": "web-mobile",
+  "platform": "web-mobile",
+  "buildPath": "project://build",
+  "outputName": "web-mobile",
+  "startScene": "1204fbee-4169-4342-bae9-2d82ae1c1cd1",
+  "scenes": [
+    {
+      "url": "db://assets/scenes/Main.scene",
+      "uuid": "1204fbee-4169-4342-bae9-2d82ae1c1cd1"
+    }
+  ],
+  "debug": false,
+  "sourceMaps": false,
+  "md5Cache": false,
+  "experimentalEraseModules": false,
+  "designResolution": {
+    "width": 390,
+    "height": 844,
+    "fitWidth": true,
+    "fitHeight": false
+  },
+  "packages": {
+    "web-mobile": {
+      "orientation": "auto",
+      "embedWebDebugger": false
+    }
+  },
+  "mainBundleCompressionType": "merge_dep",
+  "mainBundleIsRemote": false,
+  "startSceneAssetBundle": false,
+  "splashScreen": {
+    "totalTime": 0,
+    "logo": {
+      "type": "none"
+    },
+    "background": {
+      "type": "color",
+      "color": {
+        "x": 0.106,
+        "y": 0.114,
+        "z": 0.212,
+        "w": 1
+      }
+    }
+  },
+  "useSplashScreen": true
+}

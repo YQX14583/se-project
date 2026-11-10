@@ -1,0 +1,23 @@
+library/
+temp/
+local/
+profiles/
+build/
+.test-build/
+tools/output/
+node_modules/
+release/
+.DS_Store
+Thumbs.db
+*.log
+
+# Local editor account/splash information; keep shared project settings.
+settings/v2/packages/information.json
+
+# Generated simulation samples and reports; keep configs used by regression tests.
+simulation/**/*.csv
+simulation/**/validation*.json
+simulation/**/calibration*.json
+simulation/**/audit*.json
+simulation/**/ac11-recalculation.json
+simulation/**/level2-ac11-calibration.json

@@ -1,0 +1,14 @@
+{
+  "name": "sadness-match3",
+  "version": "3.8.8",
+  "private": true,
+  "creator": {
+    "version": "3.8.8"
+  },
+  "scripts": {
+    "test": "node tools/test.cjs",
+    "build": "powershell -NoProfile -ExecutionPolicy Bypass -File tools/build.ps1",
+    "serve": "node tools/serve.cjs"
+  },
+  "uuid": "17cf7950-76c9-4cc2-8820-a6960a39a417"
+}

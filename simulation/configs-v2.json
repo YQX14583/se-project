@@ -1,0 +1,1339 @@
+[
+  {
+    "id": 1,
+    "chapter": 1,
+    "index": 1,
+    "name": "窗边的雨",
+    "type": "T1",
+    "sadnessStart": 46,
+    "colors": 4,
+    "baseMoves": 4,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 2,
+    "chapter": 1,
+    "index": 2,
+    "name": "放慢呼吸",
+    "type": "T1",
+    "sadnessStart": 52,
+    "colors": 4,
+    "baseMoves": 5,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 3,
+    "chapter": 1,
+    "index": 3,
+    "name": "给心事留白",
+    "type": "T1",
+    "sadnessStart": 58,
+    "colors": 4,
+    "baseMoves": 4,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [
+      24
+    ],
+    "configVersion": 2
+  },
+  {
+    "id": 4,
+    "chapter": 1,
+    "index": 4,
+    "name": "灯光很轻",
+    "type": "T1",
+    "sadnessStart": 64,
+    "colors": 4,
+    "baseMoves": 8,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 5,
+    "chapter": 1,
+    "index": 5,
+    "name": "柔软的角落",
+    "type": "T1",
+    "sadnessStart": 40,
+    "colors": 4,
+    "baseMoves": 6,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 6,
+    "chapter": 1,
+    "index": 6,
+    "name": "让肩膀休息",
+    "type": "T1",
+    "sadnessStart": 46,
+    "colors": 4,
+    "baseMoves": 6,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 7,
+    "chapter": 1,
+    "index": 7,
+    "name": "今晚的停顿",
+    "type": "T1",
+    "sadnessStart": 52,
+    "colors": 4,
+    "baseMoves": 7,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 8,
+    "chapter": 1,
+    "index": 8,
+    "name": "未寄的信",
+    "type": "T1",
+    "sadnessStart": 58,
+    "colors": 4,
+    "baseMoves": 5,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 9,
+    "chapter": 1,
+    "index": 9,
+    "name": "一小片晴",
+    "type": "T1",
+    "sadnessStart": 64,
+    "colors": 4,
+    "baseMoves": 6,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 10,
+    "chapter": 1,
+    "index": 10,
+    "name": "听见自己",
+    "type": "T1",
+    "sadnessStart": 40,
+    "colors": 4,
+    "baseMoves": 4,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 11,
+    "chapter": 1,
+    "index": 11,
+    "name": "悄悄松开",
+    "type": "T1",
+    "sadnessStart": 46,
+    "colors": 4,
+    "baseMoves": 4,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 12,
+    "chapter": 1,
+    "index": 12,
+    "name": "深夜微风",
+    "type": "T1",
+    "sadnessStart": 52,
+    "colors": 4,
+    "baseMoves": 4,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 13,
+    "chapter": 1,
+    "index": 13,
+    "name": "放下这一页",
+    "type": "T1",
+    "sadnessStart": 58,
+    "colors": 4,
+    "baseMoves": 5,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 14,
+    "chapter": 1,
+    "index": 14,
+    "name": "仍有微光",
+    "type": "T1",
+    "sadnessStart": 64,
+    "colors": 4,
+    "baseMoves": 4,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 15,
+    "chapter": 1,
+    "index": 15,
+    "name": "明天再说",
+    "type": "T1",
+    "sadnessStart": 40,
+    "colors": 4,
+    "baseMoves": 2,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 16,
+    "chapter": 2,
+    "index": 1,
+    "name": "窗边的雨",
+    "type": "T2",
+    "sadnessStart": 51,
+    "colors": 4,
+    "baseMoves": 7,
+    "goals": {
+      "matchScoreTarget": 650,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 17,
+    "chapter": 2,
+    "index": 2,
+    "name": "放慢呼吸",
+    "type": "T2",
+    "sadnessStart": 57,
+    "colors": 4,
+    "baseMoves": 8,
+    "goals": {
+      "matchScoreTarget": 700,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 18,
+    "chapter": 2,
+    "index": 3,
+    "name": "给心事留白",
+    "type": "T2",
+    "sadnessStart": 63,
+    "colors": 4,
+    "baseMoves": 8,
+    "goals": {
+      "matchScoreTarget": 750,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 19,
+    "chapter": 2,
+    "index": 4,
+    "name": "灯光很轻",
+    "type": "T2",
+    "sadnessStart": 69,
+    "colors": 4,
+    "baseMoves": 8,
+    "goals": {
+      "matchScoreTarget": 600,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 20,
+    "chapter": 2,
+    "index": 5,
+    "name": "柔软的角落",
+    "type": "T2",
+    "sadnessStart": 45,
+    "colors": 4,
+    "baseMoves": 7,
+    "goals": {
+      "matchScoreTarget": 650,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 21,
+    "chapter": 2,
+    "index": 6,
+    "name": "让肩膀休息",
+    "type": "T2",
+    "sadnessStart": 51,
+    "colors": 4,
+    "baseMoves": 8,
+    "goals": {
+      "matchScoreTarget": 700,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 22,
+    "chapter": 2,
+    "index": 7,
+    "name": "今晚的停顿",
+    "type": "T2",
+    "sadnessStart": 57,
+    "colors": 4,
+    "baseMoves": 7,
+    "goals": {
+      "matchScoreTarget": 750,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 23,
+    "chapter": 2,
+    "index": 8,
+    "name": "未寄的信",
+    "type": "T2",
+    "sadnessStart": 63,
+    "colors": 4,
+    "baseMoves": 5,
+    "goals": {
+      "matchScoreTarget": 600,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 24,
+    "chapter": 2,
+    "index": 9,
+    "name": "一小片晴",
+    "type": "T2",
+    "sadnessStart": 69,
+    "colors": 4,
+    "baseMoves": 6,
+    "goals": {
+      "matchScoreTarget": 650,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 25,
+    "chapter": 2,
+    "index": 10,
+    "name": "听见自己",
+    "type": "T2",
+    "sadnessStart": 45,
+    "colors": 4,
+    "baseMoves": 5,
+    "goals": {
+      "matchScoreTarget": 700,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 26,
+    "chapter": 2,
+    "index": 11,
+    "name": "悄悄松开",
+    "type": "T2",
+    "sadnessStart": 51,
+    "colors": 4,
+    "baseMoves": 5,
+    "goals": {
+      "matchScoreTarget": 750,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 27,
+    "chapter": 2,
+    "index": 12,
+    "name": "深夜微风",
+    "type": "T2",
+    "sadnessStart": 57,
+    "colors": 4,
+    "baseMoves": 5,
+    "goals": {
+      "matchScoreTarget": 600,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 28,
+    "chapter": 2,
+    "index": 13,
+    "name": "放下这一页",
+    "type": "T2",
+    "sadnessStart": 63,
+    "colors": 4,
+    "baseMoves": 6,
+    "goals": {
+      "matchScoreTarget": 650,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 29,
+    "chapter": 2,
+    "index": 14,
+    "name": "仍有微光",
+    "type": "T2",
+    "sadnessStart": 69,
+    "colors": 4,
+    "baseMoves": 4,
+    "goals": {
+      "matchScoreTarget": 700,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 30,
+    "chapter": 2,
+    "index": 15,
+    "name": "明天再说",
+    "type": "T2",
+    "sadnessStart": 45,
+    "colors": 4,
+    "baseMoves": 3,
+    "goals": {
+      "matchScoreTarget": 750,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 31,
+    "chapter": 3,
+    "index": 1,
+    "name": "窗边的雨",
+    "type": "T3",
+    "sadnessStart": 56,
+    "colors": 4,
+    "baseMoves": 8,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 1,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [
+      24
+    ],
+    "configVersion": 2
+  },
+  {
+    "id": 32,
+    "chapter": 3,
+    "index": 2,
+    "name": "放慢呼吸",
+    "type": "T3",
+    "sadnessStart": 62,
+    "colors": 4,
+    "baseMoves": 8,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 1,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [
+      24
+    ],
+    "configVersion": 2
+  },
+  {
+    "id": 33,
+    "chapter": 3,
+    "index": 3,
+    "name": "给心事留白",
+    "type": "T3",
+    "sadnessStart": 68,
+    "colors": 4,
+    "baseMoves": 9,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 1,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [
+      24
+    ],
+    "configVersion": 2
+  },
+  {
+    "id": 34,
+    "chapter": 3,
+    "index": 4,
+    "name": "灯光很轻",
+    "type": "T3",
+    "sadnessStart": 74,
+    "colors": 4,
+    "baseMoves": 9,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 1,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [
+      24
+    ],
+    "configVersion": 2
+  },
+  {
+    "id": 35,
+    "chapter": 3,
+    "index": 5,
+    "name": "柔软的角落",
+    "type": "T3",
+    "sadnessStart": 50,
+    "colors": 4,
+    "baseMoves": 7,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 1,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [
+      24
+    ],
+    "configVersion": 2
+  },
+  {
+    "id": 36,
+    "chapter": 3,
+    "index": 6,
+    "name": "让肩膀休息",
+    "type": "T3",
+    "sadnessStart": 56,
+    "colors": 4,
+    "baseMoves": 7,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 1,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [
+      24
+    ],
+    "configVersion": 2
+  },
+  {
+    "id": 37,
+    "chapter": 3,
+    "index": 7,
+    "name": "今晚的停顿",
+    "type": "T3",
+    "sadnessStart": 62,
+    "colors": 4,
+    "baseMoves": 8,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 1,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [
+      24
+    ],
+    "configVersion": 2
+  },
+  {
+    "id": 38,
+    "chapter": 3,
+    "index": 8,
+    "name": "未寄的信",
+    "type": "T3",
+    "sadnessStart": 68,
+    "colors": 4,
+    "baseMoves": 6,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 1,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [
+      24
+    ],
+    "configVersion": 2
+  },
+  {
+    "id": 39,
+    "chapter": 3,
+    "index": 9,
+    "name": "一小片晴",
+    "type": "T3",
+    "sadnessStart": 74,
+    "colors": 4,
+    "baseMoves": 7,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 1,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [
+      24
+    ],
+    "configVersion": 2
+  },
+  {
+    "id": 40,
+    "chapter": 3,
+    "index": 10,
+    "name": "听见自己",
+    "type": "T3",
+    "sadnessStart": 50,
+    "colors": 4,
+    "baseMoves": 5,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 1,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [
+      24
+    ],
+    "configVersion": 2
+  },
+  {
+    "id": 41,
+    "chapter": 3,
+    "index": 11,
+    "name": "悄悄松开",
+    "type": "T3",
+    "sadnessStart": 56,
+    "colors": 4,
+    "baseMoves": 5,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 1,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [
+      24
+    ],
+    "configVersion": 2
+  },
+  {
+    "id": 42,
+    "chapter": 3,
+    "index": 12,
+    "name": "深夜微风",
+    "type": "T3",
+    "sadnessStart": 62,
+    "colors": 4,
+    "baseMoves": 6,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 1,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [
+      24
+    ],
+    "configVersion": 2
+  },
+  {
+    "id": 43,
+    "chapter": 3,
+    "index": 13,
+    "name": "放下这一页",
+    "type": "T3",
+    "sadnessStart": 68,
+    "colors": 4,
+    "baseMoves": 6,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 1,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [
+      24
+    ],
+    "configVersion": 2
+  },
+  {
+    "id": 44,
+    "chapter": 3,
+    "index": 14,
+    "name": "仍有微光",
+    "type": "T3",
+    "sadnessStart": 74,
+    "colors": 4,
+    "baseMoves": 5,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 1,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [
+      24
+    ],
+    "configVersion": 2
+  },
+  {
+    "id": 45,
+    "chapter": 3,
+    "index": 15,
+    "name": "明天再说",
+    "type": "T3",
+    "sadnessStart": 50,
+    "colors": 4,
+    "baseMoves": 3,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 1,
+      "chainActionsTarget": 0
+    },
+    "initialClouds": [
+      24
+    ],
+    "configVersion": 2
+  },
+  {
+    "id": 46,
+    "chapter": 4,
+    "index": 1,
+    "name": "窗边的雨",
+    "type": "T4",
+    "sadnessStart": 61,
+    "colors": 4,
+    "baseMoves": 8,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 2
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 47,
+    "chapter": 4,
+    "index": 2,
+    "name": "放慢呼吸",
+    "type": "T4",
+    "sadnessStart": 67,
+    "colors": 4,
+    "baseMoves": 8,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 2
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 48,
+    "chapter": 4,
+    "index": 3,
+    "name": "给心事留白",
+    "type": "T4",
+    "sadnessStart": 73,
+    "colors": 4,
+    "baseMoves": 9,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 2
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 49,
+    "chapter": 4,
+    "index": 4,
+    "name": "灯光很轻",
+    "type": "T4",
+    "sadnessStart": 79,
+    "colors": 4,
+    "baseMoves": 10,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 2
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 50,
+    "chapter": 4,
+    "index": 5,
+    "name": "柔软的角落",
+    "type": "T4",
+    "sadnessStart": 55,
+    "colors": 4,
+    "baseMoves": 7,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 2
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 51,
+    "chapter": 4,
+    "index": 6,
+    "name": "让肩膀休息",
+    "type": "T4",
+    "sadnessStart": 61,
+    "colors": 4,
+    "baseMoves": 8,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 2
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 52,
+    "chapter": 4,
+    "index": 7,
+    "name": "今晚的停顿",
+    "type": "T4",
+    "sadnessStart": 67,
+    "colors": 4,
+    "baseMoves": 8,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 2
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 53,
+    "chapter": 4,
+    "index": 8,
+    "name": "未寄的信",
+    "type": "T4",
+    "sadnessStart": 73,
+    "colors": 4,
+    "baseMoves": 6,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 2
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 54,
+    "chapter": 4,
+    "index": 9,
+    "name": "一小片晴",
+    "type": "T4",
+    "sadnessStart": 79,
+    "colors": 4,
+    "baseMoves": 7,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 2
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 55,
+    "chapter": 4,
+    "index": 10,
+    "name": "听见自己",
+    "type": "T4",
+    "sadnessStart": 55,
+    "colors": 4,
+    "baseMoves": 5,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 2
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 56,
+    "chapter": 4,
+    "index": 11,
+    "name": "悄悄松开",
+    "type": "T4",
+    "sadnessStart": 61,
+    "colors": 4,
+    "baseMoves": 5,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 2
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 57,
+    "chapter": 4,
+    "index": 12,
+    "name": "深夜微风",
+    "type": "T4",
+    "sadnessStart": 67,
+    "colors": 4,
+    "baseMoves": 6,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 2
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 58,
+    "chapter": 4,
+    "index": 13,
+    "name": "放下这一页",
+    "type": "T4",
+    "sadnessStart": 73,
+    "colors": 4,
+    "baseMoves": 6,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 2
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 59,
+    "chapter": 4,
+    "index": 14,
+    "name": "仍有微光",
+    "type": "T4",
+    "sadnessStart": 79,
+    "colors": 4,
+    "baseMoves": 5,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 2
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 60,
+    "chapter": 4,
+    "index": 15,
+    "name": "明天再说",
+    "type": "T4",
+    "sadnessStart": 72,
+    "colors": 4,
+    "baseMoves": 4,
+    "goals": {
+      "matchScoreTarget": 0,
+      "cloudsTarget": 0,
+      "chainActionsTarget": 2
+    },
+    "initialClouds": [],
+    "configVersion": 2
+  },
+  {
+    "id": 61,
+    "chapter": 5,
+    "index": 1,
+    "name": "窗边的雨",
+    "type": "T5",
+    "sadnessStart": 66,
+    "colors": 4,
+    "baseMoves": 9,
+    "goals": {
+      "matchScoreTarget": 650,
+      "cloudsTarget": 1,
+      "chainActionsTarget": 2
+    },
+    "initialClouds": [
+      24
+    ],
+    "configVersion": 2
+  },
+  {
+    "id": 62,
+    "chapter": 5,
+    "index": 2,
+    "name": "放慢呼吸",
+    "type": "T5",
+    "sadnessStart": 72,
+    "colors": 4,
+    "baseMoves": 9,
+    "goals": {
+      "matchScoreTarget": 700,
+      "cloudsTarget": 1,
+      "chainActionsTarget": 2
+    },
+    "initialClouds": [
+      24
+    ],
+    "configVersion": 2
+  },
+  {
+    "id": 63,
+    "chapter": 5,
+    "index": 3,
+    "name": "给心事留白",
+    "type": "T5",
+    "sadnessStart": 78,
+    "colors": 4,
+    "baseMoves": 10,
+    "goals": {
+      "matchScoreTarget": 750,
+      "cloudsTarget": 1,
+      "chainActionsTarget": 2
+    },
+    "initialClouds": [
+      24
+    ],
+    "configVersion": 2
+  },
+  {
+    "id": 64,
+    "chapter": 5,
+    "index": 4,
+    "name": "灯光很轻",
+    "type": "T5",
+    "sadnessStart": 84,
+    "colors": 4,
+    "baseMoves": 10,
+    "goals": {
+      "matchScoreTarget": 600,
+      "cloudsTarget": 1,
+      "chainActionsTarget": 2
+    },
+    "initialClouds": [
+      24
+    ],
+    "configVersion": 2
+  },
+  {
+    "id": 65,
+    "chapter": 5,
+    "index": 5,
+    "name": "柔软的角落",
+    "type": "T5",
+    "sadnessStart": 60,
+    "colors": 4,
+    "baseMoves": 8,
+    "goals": {
+      "matchScoreTarget": 650,
+      "cloudsTarget": 1,
+      "chainActionsTarget": 2
+    },
+    "initialClouds": [
+      24
+    ],
+    "configVersion": 2
+  },
+  {
+    "id": 66,
+    "chapter": 5,
+    "index": 6,
+    "name": "让肩膀休息",
+    "type": "T5",
+    "sadnessStart": 66,
+    "colors": 4,
+    "baseMoves": 8,
+    "goals": {
+      "matchScoreTarget": 700,
+      "cloudsTarget": 1,
+      "chainActionsTarget": 2
+    },
+    "initialClouds": [
+      24
+    ],
+    "configVersion": 2
+  },
+  {
+    "id": 67,
+    "chapter": 5,
+    "index": 7,
+    "name": "今晚的停顿",
+    "type": "T5",
+    "sadnessStart": 72,
+    "colors": 4,
+    "baseMoves": 9,
+    "goals": {
+      "matchScoreTarget": 750,
+      "cloudsTarget": 1,
+      "chainActionsTarget": 2
+    },
+    "initialClouds": [
+      24
+    ],
+    "configVersion": 2
+  },
+  {
+    "id": 68,
+    "chapter": 5,
+    "index": 8,
+    "name": "未寄的信",
+    "type": "T5",
+    "sadnessStart": 78,
+    "colors": 4,
+    "baseMoves": 7,
+    "goals": {
+      "matchScoreTarget": 600,
+      "cloudsTarget": 1,
+      "chainActionsTarget": 2
+    },
+    "initialClouds": [
+      24
+    ],
+    "configVersion": 2
+  },
+  {
+    "id": 69,
+    "chapter": 5,
+    "index": 9,
+    "name": "一小片晴",
+    "type": "T5",
+    "sadnessStart": 84,
+    "colors": 4,
+    "baseMoves": 7,
+    "goals": {
+      "matchScoreTarget": 650,
+      "cloudsTarget": 1,
+      "chainActionsTarget": 2
+    },
+    "initialClouds": [
+      24
+    ],
+    "configVersion": 2
+  },
+  {
+    "id": 70,
+    "chapter": 5,
+    "index": 10,
+    "name": "听见自己",
+    "type": "T5",
+    "sadnessStart": 60,
+    "colors": 4,
+    "baseMoves": 6,
+    "goals": {
+      "matchScoreTarget": 700,
+      "cloudsTarget": 1,
+      "chainActionsTarget": 2
+    },
+    "initialClouds": [
+      24
+    ],
+    "configVersion": 2
+  },
+  {
+    "id": 71,
+    "chapter": 5,
+    "index": 11,
+    "name": "悄悄松开",
+    "type": "T5",
+    "sadnessStart": 66,
+    "colors": 4,
+    "baseMoves": 6,
+    "goals": {
+      "matchScoreTarget": 750,
+      "cloudsTarget": 1,
+      "chainActionsTarget": 2
+    },
+    "initialClouds": [
+      24
+    ],
+    "configVersion": 2
+  },
+  {
+    "id": 72,
+    "chapter": 5,
+    "index": 12,
+    "name": "深夜微风",
+    "type": "T5",
+    "sadnessStart": 72,
+    "colors": 4,
+    "baseMoves": 7,
+    "goals": {
+      "matchScoreTarget": 600,
+      "cloudsTarget": 1,
+      "chainActionsTarget": 2
+    },
+    "initialClouds": [
+      24
+    ],
+    "configVersion": 2
+  },
+  {
+    "id": 73,
+    "chapter": 5,
+    "index": 13,
+    "name": "放下这一页",
+    "type": "T5",
+    "sadnessStart": 78,
+    "colors": 4,
+    "baseMoves": 7,
+    "goals": {
+      "matchScoreTarget": 650,
+      "cloudsTarget": 1,
+      "chainActionsTarget": 2
+    },
+    "initialClouds": [
+      24
+    ],
+    "configVersion": 2
+  },
+  {
+    "id": 74,
+    "chapter": 5,
+    "index": 14,
+    "name": "仍有微光",
+    "type": "T5",
+    "sadnessStart": 84,
+    "colors": 4,
+    "baseMoves": 5,
+    "goals": {
+      "matchScoreTarget": 700,
+      "cloudsTarget": 1,
+      "chainActionsTarget": 2
+    },
+    "initialClouds": [
+      24
+    ],
+    "configVersion": 2
+  },
+  {
+    "id": 75,
+    "chapter": 5,
+    "index": 15,
+    "name": "明天再说",
+    "type": "T5",
+    "sadnessStart": 60,
+    "colors": 4,
+    "baseMoves": 4,
+    "goals": {
+      "matchScoreTarget": 750,
+      "cloudsTarget": 1,
+      "chainActionsTarget": 2
+    },
+    "initialClouds": [
+      24
+    ],
+    "configVersion": 2
+  }
+]
